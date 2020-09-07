@@ -16,11 +16,9 @@ struct Task: Identifiable {
 }
 
 #if DEBUG
-
 let testDataTask = [
- 
-    Task(title: "Analysis of Alorithms Assigment",completed: true),
-    Task(title: "Adcance Programming Assigment",completed: true)
-
+    Task(title: "Analysis of Algorithms Assignments ",completed: false),
+    Task(title: "Advanced Programming Assignmnts",completed: false),
+    Task(title: "ITPM  Assignmnts",completed: false)
 ]
 #endif

@@ -13,12 +13,19 @@ struct ListView: View {
     
     @ObservedObject var tasklistVM = TaskListViewModel()
     let model = testDataTask
+    @Binding var isShowing: Bool
     @State var presentAddItem = false
     
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.isShowing = false
+                    }, label: { Text("Back") }).padding()
+                }
                 List{
                     ForEach(tasklistVM.taskCellViewModels) { taskCellVM in
                         TaskView(taskCellVM: taskCellVM)
@@ -42,11 +49,12 @@ struct ListView: View {
         }
     }
 }
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView()
-    }
-}
+/*struct ContentView_Previews: PreviewProvider {
+ 
+ static var previews: some View {
+ ListView(isShowing: )
+ }
+ }*/
 
 struct TaskView: View {
     
@@ -58,7 +66,7 @@ struct TaskView: View {
         HStack{
             Image(systemName: taskCellVM.task.completed ? "checkmark.circle.fill" :"circle" )
                 .resizable()
-                .frame(width: 20, height:20)
+                .frame(width: 10, height:10)
                 
                 .onTapGesture{
                     self.taskCellVM.task.completed.toggle()

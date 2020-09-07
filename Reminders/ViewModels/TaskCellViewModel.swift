@@ -9,11 +9,25 @@
 import Foundation
 import Combine
 
-class TaskCellViewModel: ObservableObject , Identifiable {
+class TaskCellViewModel: ObservableObject , Hashable ,Identifiable  {
+    
+    static func == (lhs: TaskCellViewModel, rhs: TaskCellViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    let id = UUID.self
+    
+    /* init(id: UUID? = nil) {
+     self.id = id ?? UUID()
+     }*/
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     @Published var task: Task
     
-    var id =  ""
+    var ids =  ""
     @Published var completionStateIconName = ""
     private var cancellables = Set<AnyCancellable>()
     
@@ -26,14 +40,14 @@ class TaskCellViewModel: ObservableObject , Identifiable {
         }
         .assign(to: \.completionStateIconName, on: self)
         .store(in: &cancellables)
-    
-    $task
-        .map {task in
-            task.id
+        
+        $task
+            .map {task in
+                task.id
         }
-    .assign(to: \.id, on: self)
-     .store(in: &cancellables)
-    
+        .assign(to: \.ids, on: self)
+        .store(in: &cancellables)
+        
     }
     
 }
