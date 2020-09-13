@@ -8,10 +8,12 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 
 class TaskListViewModel: ObservableObject {
     
+    @EnvironmentObject var userData: UserData
     @Published var taskCellViewModels = [TaskCellViewModel]()
     
     var documents: [TaskCellViewModel] {
@@ -23,7 +25,7 @@ class TaskListViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        self.taskCellViewModels = testDataTask.map {task in
+        self.taskCellViewModels = defaultTasks.map {task in
             TaskCellViewModel(task: task)
         }
     }
@@ -31,6 +33,12 @@ class TaskListViewModel: ObservableObject {
     func addTask(task: Task){
         let TaskVM = TaskCellViewModel(task: task)
         self.taskCellViewModels.append(TaskVM)
+    }
+    
+    private func createTask(){
+        let newTask = Task(title: "", completed: false)
+        self.userData.tasks.insert(newTask, at: 0)
+        
     }
     
     @Published private var documentNames = [TaskCellViewModel:String]()

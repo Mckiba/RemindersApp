@@ -8,55 +8,49 @@
 
 import SwiftUI
 
-
 struct ListView: View {
     
     @ObservedObject var tasklistVM = TaskListViewModel()
-    let model = testDataTask
+    let model = defaultTasks
+    @EnvironmentObject var userData: UserData
     @Binding var isShowing: Bool
     @State var presentAddItem = false
     
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        self.isShowing = false
-                    }, label: { Text("Back") }).padding()
-                }
-                List{
-                    ForEach(tasklistVM.taskCellViewModels) { taskCellVM in
-                        TaskView(taskCellVM: taskCellVM)
-                    }
-                    if(presentAddItem) {
-                        TaskView(taskCellVM: TaskCellViewModel(task: Task(title: "" , completed: false))){ task in
-                            self.tasklistVM.addTask(task: task)
-                            self.presentAddItem.toggle()
+        VStack(alignment: .trailing, spacing: -18){
+            Button(action:{
+                self.isShowing.toggle()
+            },label: {Text("Back")}).padding()
+            NavigationView {
+                VStack(alignment: .leading) {
+                    List{
+                        ForEach(tasklistVM.taskCellViewModels) { taskCellVM in
+                            TaskView(taskCellVM: taskCellVM)
+                        }
+                        if(presentAddItem) {
+                            TaskView(taskCellVM: TaskCellViewModel(task: Task(title: "" , completed: false))){ task in
+                                self.tasklistVM.addTask(task: task)
+                                self.presentAddItem.toggle()
+                            }
                         }
                     }
-                }
-                Button(action: {self.presentAddItem.toggle()}) {
-                    HStack{
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 20, height:20)
-                        Text("New task")
-                    }
-                }.padding()
-            }.navigationBarTitle("Tasks")
+                    Button(action: {self.presentAddItem = true}) {
+                        HStack{
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 20, height:20)
+                            Text("New task")
+                        }
+                    }.padding()
+                }.navigationBarTitle("Tasks")
+            }
         }
     }
 }
-/*struct ContentView_Previews: PreviewProvider {
- 
- static var previews: some View {
- ListView(isShowing: )
- }
- }*/
-
 struct TaskView: View {
+    
+    //@State var task: Task
     
     @ObservedObject var taskCellVM: TaskCellViewModel
     
@@ -67,12 +61,17 @@ struct TaskView: View {
             Image(systemName: taskCellVM.task.completed ? "checkmark.circle.fill" :"circle" )
                 .resizable()
                 .frame(width: 10, height:10)
-                
                 .onTapGesture{
                     self.taskCellVM.task.completed.toggle()
             }
             
             TextField("Enter Task Tile", text: $taskCellVM.task.title , onCommit: {self.onCommit(self.taskCellVM.task)})
         }
+    }
+}
+
+struct ListView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListView(isShowing: .constant(true))
     }
 }
