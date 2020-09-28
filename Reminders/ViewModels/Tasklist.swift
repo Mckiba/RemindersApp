@@ -13,10 +13,11 @@ import SwiftUI
 
 class TaskListViewModel: ObservableObject {
     
-    @EnvironmentObject var userData: UserData
-    @Published var taskCellViewModels = [TaskCellViewModel]()
+    @Published var taskrepository = TaskRepository()
+    @Published var items = [TaskItemViewModel]()
     
-    var documents: [TaskCellViewModel] {
+    
+    var documents: [TaskItemViewModel] {
         documentNames.keys.sorted{
             documentNames[$0]! < documentNames[$1] ?? ""
         }
@@ -25,26 +26,25 @@ class TaskListViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        self.taskCellViewModels = defaultTasks.map {task in
-            TaskCellViewModel(task: task)
+        taskrepository.$tasks.map { tasks in
+            tasks.map { task in
+                TaskItemViewModel(task: task)
+            }
         }
+        .assign(to: \.items, on: self)
+        .store(in: &cancellable)
     }
     
     func addTask(task: Task){
-        let TaskVM = TaskCellViewModel(task: task)
-        self.taskCellViewModels.append(TaskVM)
+        taskrepository.addTask(task)
+      //  let TaskVM = TaskItemViewModel(task: task)
+      //  self.items.append(TaskVM)
     }
-    
-    private func createTask(){
-        let newTask = Task(title: "", completed: false)
-        self.userData.tasks.insert(newTask, at: 0)
-        
-    }
-    
-    @Published private var documentNames = [TaskCellViewModel:String]()
+
+    @Published private var documentNames = [TaskItemViewModel:String]()
     
     
-    func removeTask(_ document: TaskCellViewModel){
+    func removeTask(_ document: TaskItemViewModel){
         //_ = TaskCellViewModel(task: task)
         documentNames[document] = nil
     }
