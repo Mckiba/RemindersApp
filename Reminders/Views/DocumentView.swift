@@ -12,7 +12,6 @@ struct DocumentView: View {
     @ObservedObject var tasklistVM = TaskListViewModel()
     @EnvironmentObject var store: TaskListViewModel
     
-        //let model = testDataTask
     @State private var searchText: String = ""
     
     var body: some View {
@@ -51,7 +50,7 @@ struct DocumentView: View {
             }.padding()
         }
     }
-}
+
 struct SearchBar: UIViewRepresentable {
     @Binding var text: String
     var placeholder: String
@@ -126,6 +125,7 @@ struct All : View {
     }
 }
 struct Flagged : View {
+    @ObservedObject var tasklistVM = TaskListViewModel()
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -134,7 +134,7 @@ struct Flagged : View {
                         .modifier(CustomModifier())
                 }
                 Spacer()
-                Text("0").bold()
+                    Text("0").bold()
             }
             Text("Flagged")
         }.padding()
@@ -162,6 +162,7 @@ struct CustomModifier: ViewModifier {
             .foregroundColor(Color.orange)
             .frame(width: 35  ,height: 35)
     }
+}
 }
 
 struct DocumentView_Previews: PreviewProvider {
