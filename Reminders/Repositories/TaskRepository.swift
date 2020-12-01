@@ -27,7 +27,8 @@ class TaskRepository: ObservableObject {
         
         db.collection("Tasks")
             .order(by: "DateCreated")
-            .whereField("userId", isEqualTo: userId)
+            //Force-unwrap the value to avoid this warning
+            .whereField("userId", isEqualTo: userId!)
             .addSnapshotListener { (querySnapshot , error) in
                 if let querySnapshot = querySnapshot {
                     self.tasks = querySnapshot.documents.compactMap { document in

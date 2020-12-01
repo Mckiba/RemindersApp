@@ -25,25 +25,16 @@ struct Task: Identifiable , Codable ,Equatable  {
         self.completed = completed
         self.DateCreated = DateCreated
     }
-}
-/*final class UserData: ObservableObject {
-    let didChange = PassthroughSubject<UserData, Never>()
     
-    @UserDefaultValue(key: "Tasks", defaultValue: defaultTasks)
-    var tasks: [Task] {
-        didSet {
-            didChange.send(self)
+    var json: Data? {
+        return try? JSONEncoder().encode(self)
+    }
+    
+    init?(json: Data?) {
+        if json != nil, let newDocument = try? JSONDecoder().decode(Task.self, from: json!) {
+            self = newDocument
+        } else {
+            return nil
         }
     }
-}*/
-/*
-#if DEBUG
-let defaultTasks = [
-    Task(title: "Analysis of Algorithms Assignments ",completed: false),
-    Task(title: "Advanced Programming Assignments",completed: false),
-    Task(title: "ITPM  Assignments",completed: false),
-    Task(title: "Finish Creating Me ☹️",completed: false)
-
-]
-#endif
-*/
+}

@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B20BB04252549D800C1E709 /* ListDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20BB03252549D800C1E709 /* ListDocument.swift */; };
 		1B2F3CB9251FFC4900BB4330 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F3CB8251FFC4900BB4330 /* TaskRepository.swift */; };
+		1B5779502575CD7B00E4C12E /* RemindersTests.xctest in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFDB8F2501CE170088B0BE /* RemindersTests.xctest */; };
+		1B5779522575CD9800E4C12E /* RemindersUITests.xctest in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFDB9A2501CE170088B0BE /* RemindersUITests.xctest */; };
+		1B5779712575D33700E4C12E /* RemindersTests in Resources */ = {isa = PBXBuildFile; fileRef = 1B5779702575D33600E4C12E /* RemindersTests */; };
+		1B5779792575D34400E4C12E /* RemindersTests in Resources */ = {isa = PBXBuildFile; fileRef = 1B5779702575D33600E4C12E /* RemindersTests */; };
 		1B7FC513251FC6EA00EE97B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B7FC512251FC6EA00EE97B1 /* GoogleService-Info.plist */; };
 		1B988991250A463B00448813 /* UserDefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B988990250A463B00448813 /* UserDefaultValue.swift */; };
+		1BA22B78252CA26000F16C38 /* MyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA22B77252CA26000F16C38 /* MyListView.swift */; };
 		1BC1811725217A01002116ED /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1811625217A01002116ED /* DocumentView.swift */; };
 		1BC1812225217BF4002116ED /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1812125217BF4002116ED /* ListView.swift */; };
 		1BDFDB7D2501CE0D0088B0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFDB7C2501CE0D0088B0BE /* AppDelegate.swift */; };
@@ -20,7 +26,6 @@
 		1BDFDBB52501CFB30088B0BE /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFDBB42501CFB30088B0BE /* Tasks.swift */; };
 		1BDFDBB825026F280088B0BE /* Tasklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFDBB725026F280088B0BE /* Tasklist.swift */; };
 		1BDFDBBC250270FA0088B0BE /* TaskItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFDBBB250270FA0088B0BE /* TaskItemViewModel.swift */; };
-		7D045F5B3F841680C7D7963A /* Pods_Reminders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DFFB9CBC37CE5EB3BEB6D3 /* Pods_Reminders.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +46,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B20BB03252549D800C1E709 /* ListDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDocument.swift; sourceTree = "<group>"; };
 		1B2F3CB8251FFC4900BB4330 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		1B57792D2575C5F900E4C12E /* RemindersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersUITests.swift; sourceTree = "<group>"; };
+		1B57792E2575C5F900E4C12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B5779702575D33600E4C12E /* RemindersTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RemindersTests; sourceTree = "<group>"; };
 		1B7FC512251FC6EA00EE97B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1B988990250A463B00448813 /* UserDefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValue.swift; sourceTree = "<group>"; };
+		1BA22B77252CA26000F16C38 /* MyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListView.swift; sourceTree = "<group>"; };
 		1BC1811625217A01002116ED /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
 		1BC1812125217BF4002116ED /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		1BDFDB792501CE0D0088B0BE /* Reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D045F5B3F841680C7D7963A /* Pods_Reminders.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,9 +115,20 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		1B57792C2575C5F900E4C12E /* RemindersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1B57792D2575C5F900E4C12E /* RemindersUITests.swift */,
+				1B57792E2575C5F900E4C12E /* Info.plist */,
+			);
+			path = RemindersUITests;
+			sourceTree = "<group>";
+		};
 		1BDFDB702501CE0D0088B0BE = {
 			isa = PBXGroup;
 			children = (
+				1B5779702575D33600E4C12E /* RemindersTests */,
+				1B57792C2575C5F900E4C12E /* RemindersUITests */,
 				1BDFDB7B2501CE0D0088B0BE /* Reminders */,
 				1BDFDB7A2501CE0D0088B0BE /* Products */,
 				14E3C761E554AF8AAB70E5B6 /* Pods */,
@@ -132,11 +152,11 @@
 				1B2F3CB4251FFC2C00BB4330 /* Repositories */,
 				1BDFDBB32501CF910088B0BE /* Model */,
 				1BDFDBB12501CF7F0088B0BE /* Views */,
+				1BDFDBB625026F120088B0BE /* ViewModels */,
 				1BDFDB822501CE160088B0BE /* Assets.xcassets */,
 				1BDFDB872501CE160088B0BE /* LaunchScreen.storyboard */,
 				1BDFDB8A2501CE160088B0BE /* Info.plist */,
 				1B7FC512251FC6EA00EE97B1 /* GoogleService-Info.plist */,
-				1BDFDBB625026F120088B0BE /* ViewModels */,
 				1BDFDBB02501CF4D0088B0BE /* App */,
 				1BDFDB842501CE160088B0BE /* Preview Content */,
 			);
@@ -165,6 +185,7 @@
 			children = (
 				1BC1811625217A01002116ED /* DocumentView.swift */,
 				1BC1812125217BF4002116ED /* ListView.swift */,
+				1BA22B77252CA26000F16C38 /* MyListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +204,7 @@
 			children = (
 				1BDFDBB725026F280088B0BE /* Tasklist.swift */,
 				1BDFDBBB250270FA0088B0BE /* TaskItemViewModel.swift */,
+				1B20BB03252549D800C1E709 /* ListDocument.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -301,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5779712575D33700E4C12E /* RemindersTests in Resources */,
 				1BDFDB892501CE160088B0BE /* LaunchScreen.storyboard in Resources */,
 				1B7FC513251FC6EA00EE97B1 /* GoogleService-Info.plist in Resources */,
 				1BDFDB862501CE160088B0BE /* Preview Assets.xcassets in Resources */,
@@ -312,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5779792575D34400E4C12E /* RemindersTests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +399,12 @@
 				1BDFDB7D2501CE0D0088B0BE /* AppDelegate.swift in Sources */,
 				1B988991250A463B00448813 /* UserDefaultValue.swift in Sources */,
 				1BDFDB7F2501CE0D0088B0BE /* SceneDelegate.swift in Sources */,
+				1B20BB04252549D800C1E709 /* ListDocument.swift in Sources */,
 				1BDFDBBC250270FA0088B0BE /* TaskItemViewModel.swift in Sources */,
 				1B2F3CB9251FFC4900BB4330 /* TaskRepository.swift in Sources */,
 				1BC1811725217A01002116ED /* DocumentView.swift in Sources */,
 				1BDFDBB825026F280088B0BE /* Tasklist.swift in Sources */,
+				1BA22B78252CA26000F16C38 /* MyListView.swift in Sources */,
 				1BC1812225217BF4002116ED /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5779502575CD7B00E4C12E /* RemindersTests.xctest in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5779522575CD9800E4C12E /* RemindersUITests.xctest in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +561,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
